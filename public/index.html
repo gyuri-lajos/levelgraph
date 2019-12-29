@@ -1,0 +1,69 @@
+<html>
+
+<head>
+    <title>Basic User Information</title>
+</head>
+
+<body>
+    <form action="http://192.168.0.17:8888/user" method="GET">
+        First Name: <input type="text" name="first_name"> <br>
+        Last Name: <input type="text" name="last_name"> <br>
+        Gender: <select name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <input type="submit" value="submit">
+    </form>
+
+
+
+    <form action="http://192.168.0.17:8888/user" method="POST">
+        Id: <input type="text" name="id"> <br>
+        First Name: <input type="text" name="first_name"> <br>
+        Last Name: <input type="text" name="last_name"> <br>
+        Gender: <select name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <input type="submit" value="submit">
+    </form>
+
+    <form id="fakeForm"></form>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script>
+        var data = [{a:"one", t:"title1",s:"Stub 1"},
+        {a:"two", t:"title2",s:"Stub 2"}]
+     //   var data = [{ "t": "juliangruber/levelweb: A GUI for LevelDB management. Includes builtin visualization tools [WIP]", "s": "juliangruber/levelweb: A GUI for LevelDB management. Includes builtin visualization tools [WIP]", "p": { "ref": "https://github.com/juliangruber/levelweb" }, "i": "https://www.google.com/s2/favicons?domain=github.com", "b": "<a href=\"https://github.com/juliangruber/levelweb\" target=\"_blank\">shared link</a>\n<div><br></div><div><img src=\"https://github.com/juliangruber/levelweb/raw/master/screenshots/screenshot0.png\" alt=\"screenshot\"><br></div>", "a": "L5be6982", "d": "dot", "le": 1575215967, "lu": 1575215986 }, { "t": "Understanding Discourse Trust Levels", "s": "Understanding Discourse Trust Levels", "p": { "ref": "https://blog.discourse.org/2018/06/understanding-discourse-trust-levels/" }, "i": "https://www.google.com/s2/favicons?domain=blog.discourse.org", "b": "<a href=\"https://blog.discourse.org/2018/06/understanding-discourse-trust-levels/\" target=\"_blank\">shared link</a>\n<div><br></div><div><img src=\"https://blog.discourse.org/wp-content/uploads/2018/06/da3aeb4dfa5d146027bc127f7f740d85d0cc6f8b.png\"><br></div><div><br></div><div><br></div>", "a": "X90dde2b", "d": "dot", "le": 1575035514, "lu": 1575035552 }, { "t": "Level/leveldown: Pure C++ Node.js LevelDB binding. An abstract-leveldown compliant store.", "s": "Level/leveldown: Pure C++ Node.js LevelDB binding. An abstract-leveldown compliant store.", "p": { "ref": "https://github.com/Level/leveldown" }, "i": "https://www.google.com/s2/favicons?domain=github.com", "b": "<a href=\"https://github.com/Level/leveldown\" target=\"_blank\">shared link</a>\n<div><br></div><div><img src=\"https://camo.githubusercontent.com/1bd15320a5fad1db168bba8bcedb098735f82464/68747470733a2f2f6c6576656c6a732e6f72672f696d672f62616467652e737667\" alt=\"level badge\"><br></div>", "a": "Gf79e8df", "d": "dot", "le": 1575024656, "lu": 1575024821 }, { "t": "gyuri-lajos/levelgraph: Graph database JS style for Node.js and the Browser. Built upon LevelUp and LevelDB.", "s": "gyuri-lajos/levelgraph: Graph database JS style for Node.js and the Browser. Built upon LevelUp and LevelDB.", "p": { "ref": "https://github.com/gyuri-lajos/levelgraph" }, "i": "https://www.google.com/s2/favicons?domain=github.com", "b": "<a href=\"https://github.com/gyuri-lajos/levelgraph\" target=\"_blank\">shared link</a>\n<div><br></div><div><img src=\"https://github.com/levelgraph/levelgraph/raw/master/logo.png\" alt=\"Logo\"><br></div>", "a": "A840b063", "d": "dot", "le": 1575215153, "lu": 1575215648 }, { "t": "Level/level: Fast & simple storage. A Node.js-style LevelDB wrapper for Node.js, Electron and browsers.", "s": "Level/level: Fast & simple storage. A Node.js-style LevelDB wrapper for Node.js, Electron and browsers.", "p": { "ref": "https://github.com/Level/level" }, "i": "https://www.google.com/s2/favicons?domain=github.com", "b": "<a href=\"https://github.com/Level/level\" target=\"_blank\">shared link</a><div><br></div><div><p style=\"box-sizing: border-box; margin-bottom: 16px; color: rgb(36, 41, 46); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;; background-color: rgb(255, 255, 255);\">This is a convenience package that:</p><ul style=\"box-sizing: border-box; padding-left: 2em; margin-top: 0px; margin-bottom: 16px; color: rgb(36, 41, 46); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;; background-color: rgb(255, 255, 255);\"><li style=\"box-sizing: border-box;\">exports a function that returns a&nbsp;<a href=\"https://github.com/Level/levelup#ctor\" style=\"box-sizing: border-box; background-color: initial; color: rgb(3, 102, 214); text-decoration-line: none;\"><code style=\"box-sizing: border-box; font-family: SFMono-Regular, Consolas, &quot;Liberation Mono&quot;, Menlo, monospace; font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;\">levelup</code></a>&nbsp;instance when invoked</li><li style=\"box-sizing: border-box; margin-top: 0.25em;\">bundles the current release of&nbsp;<a href=\"https://github.com/Level/leveldown\" style=\"box-sizing: border-box; background-color: initial; color: rgb(3, 102, 214); text-decoration-line: none;\"><code style=\"box-sizing: border-box; font-family: SFMono-Regular, Consolas, &quot;Liberation Mono&quot;, Menlo, monospace; font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;\">leveldown</code></a>&nbsp;and&nbsp;<a href=\"https://github.com/Level/level-js\" style=\"box-sizing: border-box; background-color: initial; color: rgb(3, 102, 214); text-decoration-line: none;\"><code style=\"box-sizing: border-box; font-family: SFMono-Regular, Consolas, &quot;Liberation Mono&quot;, Menlo, monospace; font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;\">level-js</code></a></li><li style=\"box-sizing: border-box; margin-top: 0.25em;\">leverages encodings using&nbsp;<a href=\"https://github.com/Level/encoding-down\" style=\"box-sizing: border-box; background-color: initial; color: rgb(3, 102, 214); text-decoration-line: none;\"><code style=\"box-sizing: border-box; font-family: SFMono-Regular, Consolas, &quot;Liberation Mono&quot;, Menlo, monospace; font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;\">encoding-down</code></a>.</li></ul>\n<div><br></div><div><img src=\"https://camo.githubusercontent.com/1bd15320a5fad1db168bba8bcedb098735f82464/68747470733a2f2f6c6576656c6a732e6f72672f696d672f62616467652e737667\" alt=\"level badge\"><br></div></div>", "a": "H9995ed6", "d": "dot", "le": 1575023347, "lu": 1575023611 }, { "t": "Build your own database with LevelDB and Node.js", "s": "Build your own database with LevelDB and Node.js", "p": { "ref": "https://mcollina.github.io/levelup-talk-cloudconf/#16" }, "i": "https://www.google.com/s2/favicons?domain=mcollina.github.io", "b": "<a href=\"https://mcollina.github.io/levelup-talk-cloudconf/#16\" target=\"_blank\">shared link</a>\n<div><br></div><div><img src=\"https://gyuri.opidox.com/images/memex/LevelUpEcosystem.png\"><br></div>", "a": "A7fedb47", "d": "dot", "le": 1575216018, "lu": 1575216202 }, { "t": "heapwolf/levelui: A GUI for LevelDB management based on atom-shell.", "s": "heapwolf/levelui: A GUI for LevelDB management based on atom-shell.", "p": { "ref": "https://github.com/heapwolf/levelui" }, "i": "https://www.google.com/s2/favicons?domain=github.com", "b": "<a href=\"https://github.com/heapwolf/levelui\" target=\"_blank\">shared link</a>\n<div><br></div><div><img src=\"https://github.com/heapwolf/levelui/raw/master/assets/img/leveldb.png\" alt=\"img\"><br></div><div><br></div><div><img src=\"https://github.com/heapwolf/levelui/raw/master/docs/screenshot1.png\" alt=\"img\"><br></div>", "a": "L41a9a2b", "d": "dot", "le": 1575394430, "lu": 1575394466 }, { "t": "Poor Man's Firebase: LevelDB, REST, and WebSockets", "s": "Poor Man's Firebase: LevelDB, REST, and WebSockets", "p": { "ref": "http://procbits.com/2014/01/06/poor-mans-firebase-leveldb-rest-and-websockets" }, "i": "https://www.google.com/s2/favicons?domain=procbits.com", "b": "<a href=\"http://procbits.com/2014/01/06/poor-mans-firebase-leveldb-rest-and-websockets\" target=\"_blank\">shared link</a>", "a": "Z53d23a2", "d": "dot", "le": 1575394275 }, { "t": "Level/level-js: An abstract-leveldown compliant store on top of IndexedDB.", "s": "Level/level-js: An abstract-leveldown compliant store on top of IndexedDB.", "p": { "ref": "https://github.com/Level/level-js" }, "i": "https://www.google.com/s2/favicons?domain=github.com", "b": "<a href=\"https://github.com/Level/level-js\" target=\"_blank\">shared link</a>\n<div><br></div><div><img src=\"https://camo.githubusercontent.com/a239734978e7806a0086d767eaf52facab875616/68747470733a2f2f73617563656c6162732e636f6d2f62726f777365722d6d61747269782f6c6576656c2d6a732e737667\" alt=\"Sauce Test Status\"><br></div>", "a": "B50a8d2a", "d": "dot", "le": 1575022871, "lu": 1575023096 }, { "t": "Level/awesome: An open list of awesome Level modules and resources.", "s": "Level/awesome: An open list of awesome Level modules and resources.", "p": { "ref": "https://github.com/Level/awesome" }, "i": "https://www.google.com/s2/favicons?domain=github.com", "b": "<a href=\"https://github.com/Level/awesome\" target=\"_blank\">shared link</a>", "a": "Efd54699", "d": "dot", "le": 1575216815 }]
+        $("form#ID").submit(function (e) {
+
+            e.preventDefault();
+
+          
+            
+
+            //Form Validation goes here....
+
+            //Save Form Data........
+            $.ajax({
+                cache: false,
+                url: "http://localhost:8888/data",
+                type: "POST",
+                dataType: "json",
+                data: JSON.stringify(data),
+                context: Form,
+                success: function (callback) {
+                    //Where $(this) => context == FORM
+                    console.log(JSON.parse(callback));
+                    $(this).html("Success!");
+                },
+                error: function () {
+                    $(this).html("Error!");
+                }
+            });
+
+    </script>
+
+</body>
+
+</html>
