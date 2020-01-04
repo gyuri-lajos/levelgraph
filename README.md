@@ -1,3 +1,24 @@
+This is a fork of LevelGraph as a technical experiment for building a
+
+# (decent)ralized (inter)personal Hyper Knowledge Graph Hub
+
+This will be spun into it's own repo once the experiment is successful in its minimal viable capability for acting as an archive and merge point for Trailmarks.
+
+The basic approach is to rely on LevelDB for storage of:
+ * MindGraph dots
+ * Keys to Media resources like images, and pdfs eventually stored in possibly private IPFS neteworks
+ * Linkography in particular in links
+ * Mapping Strings to things in a personal setting
+ * Mapping Strings to multiplicity of conversations (monologues) about things
+
+but to have a migration path to do real graph computations isomorphically.
+
+This is not a proprity at the moment as MindGraph provides many of the common operations.
+
+
+
+
+# Original README retained here for reference
 LevelGraph&nbsp;&nbsp;&nbsp;[![Build Status](https://travis-ci.org/levelgraph/levelgraph.svg)](https://travis-ci.org/levelgraph/levelgraph)&nbsp;[![Coverage Status](https://coveralls.io/repos/levelgraph/levelgraph/badge.svg)](https://coveralls.io/r/levelgraph/levelgraph)&nbsp;[![Dependency Status](https://david-dm.org/levelgraph/levelgraph.svg?theme=shields.io)](https://david-dm.org/levelgraph/levelgraph)
 ===========
 
