@@ -16,10 +16,10 @@ var app = express();
 app.use(express.static('public'));
 
 var origin1 = "https://gyuri.opidox.com"
-var origin2 = "https://192.168.0.17"
+var origin2 = "http://localhost:8080"
 var origin3 = "https://hub.opidox.com"
 app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', origin3 || origin2 || origin3);
+    res.header('Access-Control-Allow-Origin', origin2);
     res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,HEAD,DELETE,OPTIONS');
     res.header('Access-Control-Allow-Headers', 'content-Type,x-requested-with');
     next();
@@ -137,17 +137,40 @@ app.get('/dots/', (req, res) => {
     let result = {}
     count = 0;
     stream = db.createReadStream()
+    query = req.query
+    if (query) {
+        if (query.as) {
+        dots = query.as.split(',')
+        result = []
+     //   result = dots.reduce(function (a,b) {
+         count = dots.length
+         while(dots.length>0) {
+            db.get(dots[0],function (err,value){
+                result.push(JSON.parse(value))
+                count = count-1
+                if (count===0) {
+                    res.end(JSON.stringify(result));
+                }
+            })
+            dots.shift()
+           
+         }
+        } else {
+            res.end("Error: expect query string ?as=<comma separated list of anchor dot ids")
+        }
+        return
+    } else {
     stream.on('data', function (entry) {
         console.log(entry.value);
 
-        result[entry.key] = entry.value
+        result[entry.key] = JSON.parse(entry.value)
 
         count = count + 1
     })
-    stream.on('end', () =>
-
-        res.end("//" + count + "\n" + JSON.stringify(result, null, 2)))
-
+    stream.on('end', () => {
+    res.jsonp( result)
+    })
+    }
 })
 
 //This piece of code creates the server  
