@@ -138,7 +138,8 @@ app.get('/dots/', (req, res) => {
     count = 0;
     stream = db.createReadStream()
     query = req.query
-    if (query) {
+    // real query string passed not jsonp request
+    if (query && !query._) {
         if (query.as) {
         dots = query.as.split(',')
         result = []
@@ -149,14 +150,14 @@ app.get('/dots/', (req, res) => {
                 result.push(JSON.parse(value))
                 count = count-1
                 if (count===0) {
-                    res.end(JSON.stringify(result));
+                    res.json(result);
                 }
             })
             dots.shift()
            
          }
         } else {
-            res.end("Error: expect query string ?as=<comma separated list of anchor dot ids")
+            res.json({ok:false,error:"Error: expect query string ?as=<comma separated list of anchor dot ids>"})
         }
         return
     } else {
