@@ -18,10 +18,21 @@ app.use(express.static('public'));
 var origin1 = "https://gyuri.opidox.com"
 var origin2 = "http://localhost:8080"
 var origin3 = "https://hub.opidox.com"
+var origin4 = "http://192.168.0.10:8080"
 app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', origin2);
+    var allowedOrigins = [,'http://127.0.0.1:8000', 
+    'http://localhost:8080', 'http://192.168.0.10:8080',
+    'https://192.168.0.10','https://gyuri.opidox.com'];
+    var origin = req.headers.origin;
+    if(allowedOrigins.indexOf(origin) > -1){
+         res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.header('Access-Control-Allow-Credentials', true);
     res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,HEAD,DELETE,OPTIONS');
     res.header('Access-Control-Allow-Headers', 'content-Type,x-requested-with');
+   
     next();
 });
 //configure body-parser for express
